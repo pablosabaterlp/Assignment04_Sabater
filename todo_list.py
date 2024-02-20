@@ -23,5 +23,41 @@ def main():
             for task, completed in dict.items():
                 print(f"{number}. {task} - Status: {completed}")
                 number+=1 #For each iteration add 1 to the listing
+                
+    #Define the mark complete function that takes the task, either as a number or name, and the to do list
+    def markComplete(inputTask, dict):
+        #If the task is given as a number from the list, find the key that corresponds with the index and update the status to true
+        if inputTask.isnumeric():
+            intInput = int(inputTask)
+            if 1 <= intInput <= len(dict):
+                keyToUpdate = list(dict.keys())[intInput-1]
+                dict[keyToUpdate] = True
+            else: #if the key is not present then return this to the user
+                print("\nThere is no task under this number.\n=====================")
+        else: #If the task is given as a named string, then update the same if it exists
+            if inputTask in dict.keys():
+                dict[inputTask] = True
+            else:
+                print("\nThere is no task under this name.\n=====================")
+        #Print the action to the user
+        print(f"\nTask {inputTask} marked completed.\n=====================")
+    
+    #Define the delete tasks function that takes the task, either as a number or name, and the to do list
+    def deleteTasks(inputTask, dict):
+        #If the task is given as a number from the list, find the key that corresponds with the index and pop it from the dictionary
+        if inputTask.isnumeric():
+            intInput = int(inputTask)
+            if 1 <= int(inputTask) <= len(dict):
+                keyToPop = list(dict.keys())[intInput-1]
+                dict.pop(keyToPop)
+            else: #if the key is not present then return this to the user
+                print("\nThere is no task under this number.\n=====================")
+        else:#If the task is given as a named string, then update the same if it exists
+            if inputTask in dict.keys():
+                dict.pop(inputTask)
+            else:
+                print("\nThere is no task under this name.\n=====================")
+        #Print the action to the user
+        print(f"\nTask {inputTask} deleted successfully.\n=====================")
      
 main()
