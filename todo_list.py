@@ -23,7 +23,7 @@ def main():
             for task, completed in dict.items():
                 print(f"{number}. {task} - Status: {completed}")
                 number+=1 #For each iteration add 1 to the listing
-                
+
     #Define the mark complete function that takes the task, either as a number or name, and the to do list
     def markComplete(inputTask, dict):
         #If the task is given as a number from the list, find the key that corresponds with the index and update the status to true
@@ -59,5 +59,29 @@ def main():
                 print("\nThere is no task under this name.\n=====================")
         #Print the action to the user
         print(f"\nTask {inputTask} deleted successfully.\n=====================")
-     
+    
+    #Infinitely recurse as long as the user doesn't exit the program
+    while True:
+        #Ask the user for their choice of option
+        print("\nOptions: \n1. Add task \n2. View tasks \n3. Mark task as completed \n4. Delete tasks \n5. Exit")
+        userChoice = int(input("\nChoose from the previous options (input 1-5). "))
+
+        #Run the corresponding function from above according to the input from the user.
+        if userChoice == 1:
+            taskName = input("Enter the name of the task: ").capitalize()
+            addTask (taskName, taskDict)
+        elif userChoice == 2:
+            viewTasks(taskDict)
+        elif userChoice == 3:
+            taskNameNum = input("What task would you like to mark (input the exact name or the number from the list). ").capitalize()
+            markComplete(taskNameNum, taskDict)
+        elif userChoice == 4:
+            taskNameNum = input("What task would you like to delete (input the exact name or the number from the list). ").capitalize()
+            deleteTasks(taskNameNum, taskDict)
+        elif userChoice == 5:
+            print("Ending Program...")
+            break
+        else:
+            print("This is not a valid choice, try again.\n")
+#Run the main function     
 main()
