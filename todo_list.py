@@ -41,6 +41,9 @@ def main():
                 print("\nThere is no task under this name.\n=====================")
         #Print the action to the user
         print(f"\nTask {inputTask} marked completed.\n=====================")
+
+    def printHello():
+        print("Hello")
     
     #Define the delete tasks function that takes the task, either as a number or name, and the to do list
     def deleteTasks(inputTask, dict):
